@@ -1,8 +1,12 @@
 // TODO: Major clean-up
 // TODO: Make it more humane and make it get harder better -faster stronger-
-
 let canvas = document.getElementById("mainCanvas");
 const ctx = canvas.getContext("2d");
+
+const size = {
+	big: 100,
+	gap: 2
+};
 
 let box = {
 	x: 20, y: 20,
@@ -12,15 +16,15 @@ let box = {
 
 let score = 0;
 
+box.width = box.height = (Math.floor(Math.random() * (size.big - score*2)) + ((size.big - size.gap) - score*2));
+
 function main() {
 	// Updating
 	canvas.width = (window.innerWidth > 800) ? window.innerWidth : 800;
 	canvas.height = (window.innerHeight > 500) ? window.innerHeight : 500;
 
-	box.width = (Math.floor(Math.random() * (100 - score)) + 10);
-	box.height = (Math.floor(Math.random() * (100 - score)) + 10);
-	box.x += (score+1) * 0.5 * box.dxm * (Math.random() * 5 + 1);
-	box.y += (score+1) * 0.5 * box.dym * (Math.random() * 5 + 1);
+	box.x += box.dxm * (Math.random() * (score + 1) + 1);
+	box.y += box.dym * (Math.random() * (score + 1) + 1);
 
 	if (box.x <= 0 || box.x + box.width >= canvas.width) {
 		if (box.x <= 0) box.x = 0;
@@ -44,6 +48,7 @@ function main() {
 			score++;
 			box.x = (Math.random() * (canvas.width - box.width - 5) + 1);
 			box.y = (Math.random() * (canvas.height - box.height - 5) + 1);
+			box.width = box.height = (Math.floor(Math.random() * (size.big - score*2)) + ((size.big - size.gap) - score*2));
 		}
 	})
 
