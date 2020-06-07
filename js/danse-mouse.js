@@ -1,26 +1,18 @@
-/*
-Changes since last commit:
-	Turning the code from total mess to FP (but it's still a mess)
-	Multiple boxes (+1 every 10th score)
-	Moved addEventListener to outside of the loop (horror)
-	Made random(min, max) function to simplify code
-	Made inside(x, y, rect) function for checking if mouse in the box
-	Changed min. canvas size from 800x500 to 320x320 for mobile support
-	Moved startup random box size code inside array (for first box)
-	Fixed inside(x, y, rect) function logic bug
-	Now supporting mousedown and mouseup events along with click
-*/
 (function() {
 	"use strict";
-	let random = (min, max) => Math.floor(Math.random() * max + min);
 
 	let canvas = document.getElementById("mainCanvas");
 	let ctx = canvas.getContext("2d");
 	let score = 0;
+	let isTimerOn = true;
+	let minutes = 0;
+	let seconds = 0;
 	let size = {
 		big: 100,
 		gap: 2
 	};
+
+	let random = (min, max) => Math.floor(Math.random() * max + min);
 
 	let boxes = [
 		{
@@ -59,7 +51,6 @@ Changes since last commit:
 		});
 
 	}
-
 	canvas.addEventListener("click", events);
 	canvas.addEventListener("mousedown", events);
 	canvas.addEventListener("mouseup", events);
@@ -94,7 +85,20 @@ Changes since last commit:
 		});
 
 		ctx.font = "24px serif";
-		ctx.strokeText(score + " Points", 5, 30);
+		ctx.strokeText("Score " + score, 5, 30);
+		ctx.strokeText("Total time " + minutes + ":" + seconds, 5, 65);
 	}
 	setInterval(loop, 10);
+
+	function timer() {
+		if (isTimerOn) {
+			seconds++;
+
+			if (seconds >= 60) {
+				minutes++;
+				seconds = 0;
+			}
+		}
+	}
+	setInterval(timer, 1000);
 }());
