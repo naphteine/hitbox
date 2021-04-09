@@ -1,7 +1,7 @@
 (function() {
 	"use strict";
 
-	/* (Almost) Pure functions */
+	/* Pure functions */
 	const insideRect = (x, y, rect) => (x >= rect.x && x <= rect.x + rect.width) && (y >= rect.y && y <= rect.y + rect.height);
 	const random = (min, max) => Math.floor(Math.random() * max + min);
 
@@ -96,8 +96,8 @@
 
 	/* Main functions */
 	function events(e) {
-		mouseX = event.clientX - canvas.getBoundingClientRect().left;
-		mouseY = event.clientY - canvas.getBoundingClientRect().top;
+		mouseX = e.clientX - canvas.getBoundingClientRect().left;
+		mouseY = e.clientY - canvas.getBoundingClientRect().top;
 
 		switch (gameState) {
 			case stateEnum.settings:
