@@ -94,6 +94,9 @@
 		}
 	];
 
+	// Colors
+	let colors = ["orange", "yellow", "pink", "white", "brown", "blue", "red"];
+
 	/* Main functions */
 	function events(e) {
 		mouseX = e.clientX - canvas.getBoundingClientRect().left;
@@ -220,7 +223,7 @@
 						dx: random(1 + score/10, score/10), dy: random(1 + score/10, score/10),
 						width: tempWidth,
 						height: tempHeight,
-						color: "red"
+						color: colors[random(0, colors.length - 1)],
 					});
 				}
 			}
