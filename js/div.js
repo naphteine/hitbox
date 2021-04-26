@@ -33,6 +33,13 @@
         ctx.stroke();
     };
 
+    Div.drawCircle = function(circle) {
+        ctx.fillStyle = circle.color;
+        ctx.beginPath();
+        ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
+        ctx.stroke();
+    }
+
     /* text, x, y */
     Div.drawText = function(text, x, y) {
         ctx.fillStyle = "black";
