@@ -95,7 +95,7 @@
 	];
 
 	// Colors
-	let colors = ["orange", "yellow", "pink", "white", "brown", "blue", "red"];
+	let colors = ["orange", "yellow", "pink", "brown", "blue", "red"];
 
 	/* Main functions */
 	function events(e) {
