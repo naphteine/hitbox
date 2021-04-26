@@ -77,7 +77,7 @@
 		y: dialogRect.y + dialogRect.height - 55,
 		width: dialogRect.width - 10,
 		height: 50,
-		color: "#aea",
+		color: "#7f7",
 		text: "Start"
 	};
 

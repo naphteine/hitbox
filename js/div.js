@@ -1,6 +1,5 @@
 /*
  * Div (Digital inexpensive visuals) :: JS GUI Framework
- * Version: 2021-01
  * Copyright (c) 2021 gguilt
  */
 
@@ -36,8 +35,9 @@
 
     /* text, x, y */
     Div.drawText = function(text, x, y) {
+        ctx.fillStyle = "black";
         ctx.font = "24px Arial";
-        ctx.strokeText(text, x, y);
+        ctx.fillText(text, x, y);
     };
 
     /* Button components: x, y, width, height, color, text, *checkbox */
